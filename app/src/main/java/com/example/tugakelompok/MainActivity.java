@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         setUpBottomNavigationBar();
         // init fragment
         initFragment();
-        // recycle view
-        // recycleView();
     }
 
     private void initFragment() {
