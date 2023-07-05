@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private HomeFragment fragmentHome;
     private AddMovieFragment fragmentAddMovie;
     private Fragment activeFragment;
-    private FrameLayout contentFrame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,31 +52,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, activeFragment).commit();
     }
 
-    private void recycleView() {
-        RecyclerView recyclerView = new RecyclerView(this);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        List<Item> itemList = new ArrayList<>();
-        itemList.add(new Item("Item 1", R.drawable.ic_launcher_background));
-        itemList.add(new Item("Item 2", R.drawable.ic_launcher_background));
-        itemList.add(new Item("Item 3", R.drawable.ic_launcher_background));
-        itemList.add(new Item("Item 4", R.drawable.ic_launcher_background));
-
-        ItemAdapter itemAdapter = new ItemAdapter(itemList);
-        recyclerView.setAdapter(itemAdapter);
-
-        // Hapus semua view dari contentFrame
-        contentFrame.removeAllViews();
-
-        // Tambahkan RecyclerView ke dalam contentFrame
-        contentFrame.addView(recyclerView);
-    }
 
     // init semua component disini
     private void initComponents() {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        contentFrame = findViewById(R.id.content_frame);
+
     }
 
     private void setUpBottomNavigationBar() {

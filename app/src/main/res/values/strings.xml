@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Tugakelompok</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">FilmFlix</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -9,7 +9,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">FilmFlix</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

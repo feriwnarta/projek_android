@@ -1,12 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Input Gambar Film -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layoutImageUpload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewFilm"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/baseline_movie_24"
+            android:scaleType="centerCrop" />
+
+        <Button
+            android:id="@+id/buttonChooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageViewFilm"
+            android:layout_centerHorizontal="true"
+            android:text="Pilih Gambar"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+
+
+
+
+    <!-- Input Nama Film -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutFilmName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorPrimary"
+        android:hint="Nama Film" android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextFilmName"
+            android:layout_width="match_parent"
+            android:textColor="?attr/colorPrimary"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Input Produser -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutProducer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorPrimary"
+        android:hint="Produser" android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextProducer"
+            android:layout_width="match_parent"
+            android:textColor="?attr/colorPrimary"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Input Durasi Film -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorPrimary"
+        android:hint="Durasi Film" android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDuration"
+            android:layout_width="match_parent"
+            android:textColor="?attr/colorPrimary"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Tombol Simpan -->
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Simpan" />
+
 </LinearLayout>
