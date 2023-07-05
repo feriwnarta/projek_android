@@ -2,19 +2,18 @@ package data;
 
 public class Item {
     private String title;
-    private int icon;
+    private String imgPath;
 
-    public Item(String title, int icon) {
+    public Item(String title, String imgPath) {
         this.title = title;
-        this.icon = icon;
+        this.imgPath = imgPath;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getIcon() {
-        return icon;
+    public String getImgPath() {
+        return imgPath;
     }
 }
-

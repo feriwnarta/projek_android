@@ -66,17 +66,6 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener {
     private void initDb() {
         db = new DatabaseHelper(requireContext());
 
-        String tableName = "tb_movies";
-
-        String[] columnNames = {
-                "id INTEGER PRIMARY KEY AUTOINCREMENT",
-                "nama_film VARCHAR(255)",
-                "produser VARCHAR(255)",
-                "durasi_film VARCHAR(255)",
-                "image_path VARCHAR(255)"
-        };
-
-        db.createTable(tableName, columnNames);
     }
 
     @Override

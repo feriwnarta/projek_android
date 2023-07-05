@@ -11,12 +11,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text=""
-        />
+        android:ellipsize="end"
+        android:maxLines="1" />
 
     <ImageView
         android:id="@+id/imageViewIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:scaleType="centerCrop" />
 
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,39 +43,44 @@ public class HomeFragment extends Fragment {
         initDb();
         List<Item> itemList = getDataFromSQLite("tb_movies");
 
-
-
-        ItemAdapter itemAdapter = new ItemAdapter(itemList);
+        itemAdapter = new ItemAdapter(itemList);
         recyclerView.setAdapter(itemAdapter);
-
-
-
 
         return view;
     }
 
-   public void initDb() {
+    public void initDb() {
         db = new DatabaseHelper(requireContext());
-   }
+        String tableName = "tb_movies";
+
+        String[] columnNames = {
+                "id INTEGER PRIMARY KEY AUTOINCREMENT",
+                "nama_film VARCHAR(255)",
+                "produser VARCHAR(255)",
+                "durasi_film VARCHAR(255)",
+                "image_path VARCHAR(255)"
+        };
+
+        db.createTable(tableName, columnNames);
+    }
 
     public List<Item> getDataFromSQLite(String tableName) {
         List<Item> movies = new ArrayList<>();
 
-
+        SQLiteDatabase database = db.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + tableName;
-        Cursor cursor = db.getReadableDatabase().rawQuery(selectQuery, null);
+        Cursor cursor = database.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
             int nameIndex = cursor.getColumnIndex("nama_film");
-            int imageUrlIndex = cursor.getColumnIndex("produser");
+            int imageUrlIndex = cursor.getColumnIndex("image_path");
 
             while (!cursor.isAfterLast()) {
                 if (nameIndex != -1 && imageUrlIndex != -1) {
                     String name = cursor.getString(nameIndex);
                     String imageUrl = cursor.getString(imageUrlIndex);
 
-                    // Ganti R.drawable.ic_launcher_background dengan nilai yang sesuai dari tabel Anda
-                    Item item = new Item(name, R.drawable.ic_launcher_background);
+                    Item item = new Item(name, imageUrl);
                     movies.add(item);
                 }
 
@@ -83,11 +89,8 @@ public class HomeFragment extends Fragment {
         }
 
         cursor.close();
-        db.close();
+        database.close();
 
         return movies;
     }
-
-
-
 }
