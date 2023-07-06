@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.tugakelompok.R;
 
@@ -110,6 +111,13 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener {
 
         // Memeriksa apakah operasi insert berhasil
         if (newRowId != -1) {
+            // Ganti dengan fragment yang ingin Anda tampilkan setelah menghapus data (misalnya HomeFragment)
+            Fragment fragment = new HomeFragment();
+            FragmentManager fragmentManager = getParentFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment)
+                    .commit();
+
             Toast.makeText(getActivity(), "Berhasil input data", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getActivity(), "Gagal input data", Toast.LENGTH_SHORT).show();

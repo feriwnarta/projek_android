@@ -46,6 +46,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public void updateData(String tableName, ContentValues values, String whereClause, String[] whereArgs) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.update(tableName, values, whereClause, whereArgs);
+        db.close();
+    }
+
+    public void deleteData(String tableName, String whereClause, String[] whereArgs) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(tableName, whereClause, whereArgs);
+        db.close();
+    }
+
     // Metode untuk menjalankan perintah SQL
     public void executeSql(String sql) {
         SQLiteDatabase db = getWritableDatabase();

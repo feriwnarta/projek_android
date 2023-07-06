@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
         initDb();
         List<Item> itemList = getDataFromSQLite("tb_movies");
 
-        itemAdapter = new ItemAdapter(itemList);
+        itemAdapter = new ItemAdapter(itemList, getParentFragmentManager());
         recyclerView.setAdapter(itemAdapter);
 
         return view;
@@ -72,15 +72,22 @@ public class HomeFragment extends Fragment {
         Cursor cursor = database.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
+            int idIndex = cursor.getColumnIndex("id");
             int nameIndex = cursor.getColumnIndex("nama_film");
             int imageUrlIndex = cursor.getColumnIndex("image_path");
+            int produserIndex = cursor.getColumnIndex("produser");
+            int durasiIndex = cursor.getColumnIndex("durasi_film");
+
 
             while (!cursor.isAfterLast()) {
                 if (nameIndex != -1 && imageUrlIndex != -1) {
+                    String id = cursor.getString(idIndex);
                     String name = cursor.getString(nameIndex);
                     String imageUrl = cursor.getString(imageUrlIndex);
+                    String produser = cursor.getString(produserIndex);
+                    String durasi = cursor.getString(durasiIndex);
 
-                    Item item = new Item(name, imageUrl);
+                    Item item = new Item(id, name, imageUrl, produser, durasi);
                     movies.add(item);
                 }
 

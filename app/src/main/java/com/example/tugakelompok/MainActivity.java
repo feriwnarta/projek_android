@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void replaceFragment(Fragment fragment) {
-        if (activeFragment != fragment) {
+
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_frame, fragment)
                     .commit();
             activeFragment = fragment;
-        }
+
     }
 }
