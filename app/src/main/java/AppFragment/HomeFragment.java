@@ -58,7 +58,8 @@ public class HomeFragment extends Fragment {
                 "nama_film VARCHAR(255)",
                 "produser VARCHAR(255)",
                 "durasi_film VARCHAR(255)",
-                "image_path VARCHAR(255)"
+                "image_path VARCHAR(255)",
+                "category VARCHAR(255)",
         };
 
         db.createTable(tableName, columnNames);
@@ -77,6 +78,7 @@ public class HomeFragment extends Fragment {
             int imageUrlIndex = cursor.getColumnIndex("image_path");
             int produserIndex = cursor.getColumnIndex("produser");
             int durasiIndex = cursor.getColumnIndex("durasi_film");
+            int categoryIndex = cursor.getColumnIndex("category");
 
 
             while (!cursor.isAfterLast()) {
@@ -86,8 +88,9 @@ public class HomeFragment extends Fragment {
                     String imageUrl = cursor.getString(imageUrlIndex);
                     String produser = cursor.getString(produserIndex);
                     String durasi = cursor.getString(durasiIndex);
+                    String category = cursor.getString(categoryIndex);
 
-                    Item item = new Item(id, name, imageUrl, produser, durasi);
+                    Item item = new Item(id, name, imageUrl, produser, durasi, category);
                     movies.add(item);
                 }
 

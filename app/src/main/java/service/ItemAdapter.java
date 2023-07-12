@@ -60,6 +60,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 bundle.putString("item_image", item.getImgPath());
                 bundle.putString("item_produser", item.getProduser());
                 bundle.putString("item_durasi", item.getDurasi());
+                bundle.putString("category", item.getCategory());
 
                 fragment.setArguments(bundle);
 

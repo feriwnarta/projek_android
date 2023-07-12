@@ -32,6 +32,7 @@ public class DetailFragment extends Fragment {
     private TextView textViewTitle;
     private TextView produserTextViewTitle;
     private TextView durasiTextView;
+    private TextView categoryTextView;
 
     private Button buttonEdit;
     private Button buttonDelete;
@@ -50,6 +51,7 @@ public class DetailFragment extends Fragment {
         durasiTextView = view.findViewById(R.id.durasi);
         buttonEdit = view.findViewById(R.id.editButton);
         buttonDelete = view.findViewById(R.id.deleteButton);
+        categoryTextView = view.findViewById(R.id.category);
 
         // db
 
@@ -68,11 +70,14 @@ public class DetailFragment extends Fragment {
             String itemImage = bundle.getString("item_image");
             String durasi = bundle.getString("item_durasi");
             String produser = bundle.getString("item_produser");
+            String category = bundle.getString("category");
 
             // Menggunakan data yang diambil
             textViewTitle.setText(itemTitle);
             produserTextViewTitle.setText(produser);
             durasiTextView.setText(durasi);
+            categoryTextView.setText(category);
+
 
 
             Glide.with(view.getContext())
@@ -80,7 +85,7 @@ public class DetailFragment extends Fragment {
                     .apply(new RequestOptions().placeholder(R.drawable.baseline_movie_24))
                     .into(imageViewIcon);
 
-            Item item = new Item(id, itemTitle, itemImage, produser, durasi);
+            Item item = new Item(id, itemTitle, itemImage, produser, durasi, category);
 
 
             // button edit click
@@ -140,11 +145,13 @@ public class DetailFragment extends Fragment {
         EditText namaFilmEditText = dialogView.findViewById(R.id.namaFilmeditText);
         EditText produserEditText = dialogView.findViewById(R.id.produserEditText);
         EditText durasiEditText = dialogView.findViewById(R.id.durasiEditText);
+        EditText categoryEditText = dialogView.findViewById(R.id.categoryEditText);
 
         if(item != null) {
             namaFilmEditText.setText(item.getTitle());
             produserEditText.setText(item.getProduser());
             durasiEditText.setText(item.getDurasi());
+            categoryEditText.setText(item.getCategory());
         }
 
 
@@ -155,17 +162,17 @@ public class DetailFragment extends Fragment {
             String namaFilm = namaFilmEditText.getText().toString();
             String produser = produserEditText.getText().toString();
             String durasi = durasiEditText.getText().toString();
-            // Do something with the input text
-            if (!namaFilm.isEmpty() && !produser.isEmpty() && !durasi.isEmpty() && !item.getId().isEmpty())  {
-                // Show a Toast with the input text
+            String category = categoryEditText.getText().toString();
 
 
+            if (!namaFilm.isEmpty() && !produser.isEmpty() && !durasi.isEmpty() && !item.getId().isEmpty() && !item.getCategory().isEmpty())  {
 
                 // save to database
                 ContentValues values = new ContentValues();
                 values.put("nama_film", namaFilm);
                 values.put("produser", produser);
                 values.put("durasi_film", durasi);
+                values.put("category", category);
 
                 String tableName = "tb_movies";
                 String whereClause = "id = ?";

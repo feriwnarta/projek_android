@@ -9,12 +9,15 @@ public class Item {
 
     private String durasi;
 
-    public Item(String id, String title, String imgPath, String produser, String durasi) {
+    private String category;
+
+    public Item(String id, String title, String imgPath, String produser, String durasi, String category) {
         this.id = id;
         this.title = title;
         this.imgPath = imgPath;
         this.produser = produser;
         this.durasi = durasi;
+        this.category = category;
     }
 
     public String getId() {
@@ -55,5 +58,13 @@ public class Item {
 
     public void setDurasi(String durasi) {
         this.durasi = durasi;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

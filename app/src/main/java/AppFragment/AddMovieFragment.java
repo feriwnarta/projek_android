@@ -33,10 +33,10 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener {
 
     private Button buttonChooseImage;
     private ImageView imageViewFilm;
-    private EditText editTextNamaFilm, editTextProduser, editTextDurasiFilm;
+    private EditText editTextNamaFilm, editTextProduser, editTextDurasiFilm, editTextCategory;
     private Button buttonSimpan;
     private DatabaseHelper db;
-    private String namaFilm, produser, durasiFilm;
+    private String namaFilm, produser, durasiFilm, category;
     private Uri imageUri; // Menyimpan URI gambar yang dipilih
 
     public AddMovieFragment() {
@@ -55,6 +55,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener {
         editTextNamaFilm = view.findViewById(R.id.editTextFilmName);
         editTextProduser = view.findViewById(R.id.editTextProducer);
         editTextDurasiFilm = view.findViewById(R.id.editTextDuration);
+        editTextCategory = view.findViewById(R.id.editTextCategory);
         buttonSimpan = view.findViewById(R.id.buttonSave);
         buttonSimpan.setOnClickListener(this);
 
@@ -92,8 +93,10 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener {
         namaFilm = editTextNamaFilm.getText().toString().trim();
         produser = editTextProduser.getText().toString().trim();
         durasiFilm = editTextDurasiFilm.getText().toString().trim();
+        category = editTextCategory.getText().toString().trim();
 
-        return TextUtils.isEmpty(namaFilm) || TextUtils.isEmpty(produser) || TextUtils.isEmpty(durasiFilm) || imageViewFilm.getDrawable() == null;
+
+        return TextUtils.isEmpty(category) || TextUtils.isEmpty(namaFilm) || TextUtils.isEmpty(produser) || TextUtils.isEmpty(durasiFilm) || imageViewFilm.getDrawable() == null ;
     }
 
     private void saveDataToDatabase() {
@@ -105,6 +108,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener {
         values.put("produser", produser);
         values.put("durasi_film", durasiFilm);
         values.put("image_path", imageUri.toString()); // Menyimpan URI gambar sebagai string
+        values.put("category", category);
 
         // Memanggil fungsi insertData() untuk memasukkan data ke dalam tabel
         long newRowId = db.insertData(tableName, values);

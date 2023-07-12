@@ -11,4 +11,9 @@
         android:title="Add Movie"
         android:icon="@drawable/add_icon" />
 
+    <item
+        android:id="@+id/menu_user"
+        android:title="User"
+        android:icon="@drawable/user" />
+
 </menu>
