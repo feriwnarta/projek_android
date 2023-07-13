@@ -33,7 +33,7 @@ import service.ItemAdapter;
 public class UserFragment extends Fragment {
     private DatabaseHelper db;
     private SharedPreferences sharedPreferences;
-    private TextView sayHelloUserEditText, listUser;
+    private TextView sayHelloUserEditText, listUser, listKelompok;
 
     private Button buttonLogOut;
 
@@ -75,12 +75,13 @@ public class UserFragment extends Fragment {
 
             sayHelloUserEditText = view.findViewById(R.id.sayHelloUser);
             listUser = view.findViewById(R.id.listUser);
+            listKelompok = view.findViewById(R.id.listKelompok);
 
             sayHelloUserEditText.setText("Hallo, " + userLog);
 
             List<String> allUser = getAllUser("tb_user");
 
-            String format = "";
+            String format = "\nUser Yang Terdaftar : \n";
 
             for(String user : allUser) {
 
@@ -89,6 +90,8 @@ public class UserFragment extends Fragment {
             }
 
             listUser.setText(format);
+            String kelompok = "\nAnggota Kelompok : \n1. Leinsky Erlangga \n2. Hecky Riadi \n3. Louiss Figo Salim \n4. Andi Kusuma \n5. Feri Winarta";
+            listKelompok.setText(kelompok);
 
 
         }
